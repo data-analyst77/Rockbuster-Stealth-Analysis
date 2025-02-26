@@ -1,0 +1,9 @@
+1) Analyze the rental duration distribution. How many days are most films rented for?
+
+SELECT rental_duration AS "rented for (in days)", COUNT(*) AS "number of films"
+   FROM film
+   GROUP BY 1
+   ORDER BY 2 DESC 
+
+Answer: Most filsm are rented for 6 days. 
+
