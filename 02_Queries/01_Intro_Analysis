@@ -1,24 +1,36 @@
-1) Analyze the rental duration distribution. How many days are most films rented for?
+-- Analyze the rental duration distribution: How many days are most films rented for?
+SELECT rental_duration AS "Rented for (in days)", 
+       COUNT(*) AS "Number of films"
+FROM film
+GROUP BY rental_duration
+ORDER BY COUNT(*) DESC;
 
-SELECT rental_duration AS "rented for (in days)", COUNT(*) AS "number of films"
-   FROM film
-   GROUP BY 1
-   ORDER BY 2 DESC;
+Answer: Most films are rented for 6 days. 
 
-Answer: Most filsm are rented for 6 days. 
-
-2) Write a SELECT command to find out what film genres exist in the category table. Make sure to include the category ID for each genre.
-
+-- Retrieve all film genres from the category table, including category ID.
 SELECT category_id, name AS genre
 FROM category
 ORDER BY category_id;
 
-3) Write an INSERT statement to add the following genres to the category table: Thriller, Crime, Mystery, Romance, and War.
 
-SELECT category_id, name AS genre
-FROM category;
+-- Write an INSERT statement to add the following genres to the category table: Thriller, Crime, Mystery, Romance, and War.
 
 INSERT INTO category (genre)
 VALUES ('Thriller'),('Crime'),('Mystery'), ('Romance'), ('War'); 
 
-4) 
+
+-- The genre for the movie African Egg needs to be updated to thriller (assuming it is category_id = 17).
+SELECT category_id, name AS genre
+FROM category
+WHERE name = 'Thriller';
+
+-- Find the film ID of "African Egg".
+SELECT film_id
+FROM film
+WHERE title = 'African Egg';
+
+-- Update the genre of "African Egg" to 'Thriller'.
+UPDATE film_category
+SET category_id = 17
+WHERE film_id = 5;
+
