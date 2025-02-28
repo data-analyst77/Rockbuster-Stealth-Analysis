@@ -3,7 +3,7 @@
 SELECT rental_duration AS "rented for (in days)", COUNT(*) AS "number of films"
    FROM film
    GROUP BY 1
-   ORDER BY 2 DESC 
+   ORDER BY 2 DESC;
 
 Answer: Most filsm are rented for 6 days. 
 
@@ -12,3 +12,13 @@ Answer: Most filsm are rented for 6 days.
 SELECT category_id, name AS genre
 FROM category
 ORDER BY category_id;
+
+3) Write an INSERT statement to add the following genres to the category table: Thriller, Crime, Mystery, Romance, and War.
+
+SELECT category_id, name AS genre
+FROM category;
+
+INSERT INTO category (genre)
+VALUES ('Thriller'),('Crime'),('Mystery'), ('Romance'), ('War'); 
+
+4) 
