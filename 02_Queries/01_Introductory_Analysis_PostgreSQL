@@ -12,12 +12,10 @@ SELECT category_id, name AS genre
 FROM category
 ORDER BY category_id;
 
-
 -- Write an INSERT statement to add the following genres to the category table: Thriller, Crime, Mystery, Romance, and War.
 
 INSERT INTO category (genre)
 VALUES ('Thriller'),('Crime'),('Mystery'), ('Romance'), ('War'); 
-
 
 -- The genre for the movie African Egg needs to be updated to thriller (assuming it is category_id = 17).
 SELECT category_id, name AS genre
@@ -39,5 +37,30 @@ SELECT title, release_year, rental_rate
 FROM film
 ORDER BY title ASC, 
 release_year DESC, rental_rate DESC;
+
+-- Custom order query. What are the minimum and the maximum replacement costs for each rating category ordered by rating as follows: G, PG, PG-13, R, NC-17?
+SELECT rating, 
+       MIN(replacement_cost) AS min_replacement_cost, 
+       MAX(replacement_cost) AS max_replacement_cost
+FROM film
+GROUP BY rating
+ORDER BY CASE  
+            WHEN rating = 'G' THEN 1
+            WHEN rating = 'PG' THEN 2
+            WHEN rating = 'PG-13' THEN 3
+            WHEN rating = 'R' THEN 4
+            WHEN rating = 'NC-17' THEN 5
+			ELSE 6
+         END;
+
+### Output Minimum & Maximum Replacement Costs by Rating  
+
+| Rating  | Min Replacement Cost | Max Replacement Cost |
+|---------|----------------------|----------------------|
+| G       | 9.99                 | 29.99               |
+| PG      | 9.99                 | 29.99               |
+| PG-13   | 9.99                 | 29.99               |
+| R       | 9.99                 | 29.99               |
+| NC-17   | 9.99                 | 29.99               |
 
 
