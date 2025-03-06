@@ -34,3 +34,10 @@ UPDATE film_category
 SET category_id = 17
 WHERE film_id = 5;
 
+-- Run a query that selects every film from the “film” table, with the movies sorted by title from A to Z, then by most recent release year, and then by highest to lowest rental rate. 
+SELECT title, release_year, rental_rate 
+FROM film
+ORDER BY title ASC, 
+release_year DESC, rental_rate DESC;
+
+
