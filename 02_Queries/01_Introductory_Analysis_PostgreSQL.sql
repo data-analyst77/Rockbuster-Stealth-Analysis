@@ -64,3 +64,18 @@ ORDER BY CASE
 | NC-17   | 9.99                 | 29.99               |
 
 
+-- Filter film titles that contain the word 'Uptown' in an position. 
+SELECT film_id, title, description 
+FROM film 
+WHERE title LIKE '%Uptown%';
+
+-- Filter film titles where rental duration is between 3 and 7 days (where 3 and 7 aren’t inclusive).
+SELECT film_id, title, description, rental_duration
+FROM film 
+WHERE rental_duration>3 AND rental_duration<7;
+
+-- Filter film titles where rating is either PG or G.
+SELECT film_id, title, description, rating
+FROM film 
+WHERE rating IN ('PG', 'G');
+
