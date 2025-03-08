@@ -43,7 +43,15 @@ UPDATE film
 SET title = 'Unknown'
 WHERE title IS NULL;
 
-
+--Summary Film for columns where it makes sense.
+SELECT 
+MIN (release_year) AS earliest_release,
+MAX (release_year) AS latest_release, 
+AVG (rental_duration) AS avg_rent_duration,
+AVG (rental_rate) AS avg_rent_rate,
+AVG (replacement_cost) AS avg_replacement_cost,
+MODE() WITHIN GROUP (ORDER BY rating) AS modal_rating
+FROM film;
 
 
 
