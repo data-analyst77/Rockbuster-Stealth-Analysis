@@ -1,6 +1,6 @@
 # Joining Tables of Data 
 
-## 1.	Write a query to find the top 10 countries for Rockbuster in terms of customer numbers. (Tip: you’ll have to use GROUP BY and ORDER BY, both of which follow the join.)  
+-- 1.	Write a query to find the top 10 countries for Rockbuster in terms of customer numbers. (Tip: you’ll have to use GROUP BY and ORDER BY, both of which follow the join.)  
 
 --Top 10 countries by customer number
 SELECT 
@@ -15,7 +15,7 @@ ORDER BY customer_count DESC
 LIMIT 10;
 
 
-Assumptions
+## Assumptions
 1.	Table A=customer
 2.	Table B=address
 3.	Table C=city
