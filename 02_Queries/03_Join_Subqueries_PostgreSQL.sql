@@ -68,4 +68,40 @@ GROUP BY A.customer_id, A.first_name, A.last_name, D.country, C.city
 ORDER BY total_amount_paid DESC  -- Sort by total amount paid
 LIMIT 5;  -- Limit the result to top 5 customers
 
+-- 3. Find the average amount paid by the top 5 customers. 
+/* 
+Format: SELECT AVG(total_amount_paid) AS average 
+FROM (subquery) AS total_amount_paid 
+*/
+
+
+SELECT AVG(total_amount_paid.amount) AS avg_amount_paid
+FROM (
+    SELECT 
+        A.customer_id, 
+        A.first_name, 
+        A.last_name, 
+        D.country, 
+        C.city, 
+        SUM(P.amount) AS amount
+    FROM customer A
+    INNER JOIN payment P ON A.customer_id = P.customer_id  -- Join customer and payment tables
+    INNER JOIN address B ON A.address_id = B.address_id  -- Join customer and address tables
+    INNER JOIN city C ON B.city_id = C.city_id  -- Join address and city tables
+    INNER JOIN country D ON C.country_id = D.country_id  -- Join city and country tables
+    WHERE C.city IN (
+        SELECT C.city  -- Subquery to get the top 10 cities
+        FROM city C
+        INNER JOIN address B ON C.city_id = B.city_id
+        INNER JOIN customer A ON B.address_id = A.address_id
+        INNER JOIN payment P ON A.customer_id = P.customer_id
+        GROUP BY C.city
+        ORDER BY SUM(P.amount) DESC  -- Order cities by total payment
+        LIMIT 10  -- Get top 10 cities
+    )
+    GROUP BY A.customer_id, A.first_name, A.last_name, D.country, C.city
+    ORDER BY amount DESC  -- Sort by total amount paid
+    LIMIT 5  -- Limit the result to top 5 customers
+) AS total_amount_paid;  -- Alias for the entire subquery
+
 
