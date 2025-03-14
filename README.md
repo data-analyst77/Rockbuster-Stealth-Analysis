@@ -4,6 +4,8 @@ Rockbuster Stealth LLC is a fictional movie rental company looking into launchin
 
 This analysis supports the business intelligence (BI) in launching their new strategy with solving questions on video, movie characteristics in the database, customers locations, and regional sales analysis. 
 
+**Tableau Storyboard** available on https://public.tableau.com/app/profile/da77/viz/3_10_Rockbuster_Presentation_DA77/StorybookFINAL 
+
 **Industry**: enterainment, streaming.
 
 **Technologies used**: SQL, PostgreSQL, Tableau, Excel. 
